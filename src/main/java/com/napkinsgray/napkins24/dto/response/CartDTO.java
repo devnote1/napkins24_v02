@@ -1,4 +1,4 @@
-package com.napkinsgray.napkins24.dto;
+package com.napkinsgray.napkins24.dto.response;
 
 import com.napkinsgray.napkins24.entity.Cart;
 import lombok.AllArgsConstructor;
@@ -20,9 +20,6 @@ public class CartDTO {
     private String bookTitle;
     private String bookAuthor;
     private BigDecimal bookPrice;
-
-
-
 
     // fromEntity 정적 메서드
     public static CartDTO fromEntity(Cart cart) {

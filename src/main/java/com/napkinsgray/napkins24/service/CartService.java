@@ -1,6 +1,6 @@
 package com.napkinsgray.napkins24.service;
 
-import com.napkinsgray.napkins24.dto.CartDTO;
+import com.napkinsgray.napkins24.dto.response.CartDTO;
 import com.napkinsgray.napkins24.entity.Book;
 import com.napkinsgray.napkins24.entity.Cart;
 import com.napkinsgray.napkins24.entity.User;

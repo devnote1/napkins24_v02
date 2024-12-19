@@ -1,6 +1,6 @@
 package com.napkinsgray.napkins24.service;
 
-import com.napkinsgray.napkins24.dto.BookDTO;
+import com.napkinsgray.napkins24.dto.response.BookDTO;
 import com.napkinsgray.napkins24.entity.Book;
 import com.napkinsgray.napkins24.exceptions.errors.Exception404;
 import com.napkinsgray.napkins24.repository.BookRepository;

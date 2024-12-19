@@ -1,10 +1,9 @@
-package com.napkinsgray.napkins24.dto;
+package com.napkinsgray.napkins24.dto.request;
 
 import lombok.Data;
-import lombok.Getter;
 
 @Data
-public class SignupRequest {
+public class SignupDTO {
 
     private String username;
     private String password;

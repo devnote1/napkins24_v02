@@ -1,4 +1,4 @@
-package com.napkinsgray.napkins24.dto;
+package com.napkinsgray.napkins24.dto.response;
 
 import com.napkinsgray.napkins24.entity.Book;
 import lombok.AllArgsConstructor;
