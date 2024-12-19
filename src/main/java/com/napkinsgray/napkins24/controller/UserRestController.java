@@ -44,7 +44,7 @@ public class UserRestController {
      * @return 공통 DTO(ApiUtil) 형식의 JWT 토큰 응답
      */
     @Operation(summary = "로그인", description = "사용자가 로그인하고 JWT 토큰을 발급받습니다.")
-    @PostMapping("/login")
+    @PostMapping("/signin")
     public ResponseEntity<ApiUtil<TokenResponse>> loginUser(@RequestBody LoginDTO request) {
         // JWT 토큰 생성
         String token = userService.loginUser(request.getUsername(), request.getPassword());
