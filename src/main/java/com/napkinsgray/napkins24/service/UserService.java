@@ -1,8 +1,11 @@
 package com.napkinsgray.napkins24.service;
 
 import com.napkinsgray.napkins24.entity.User;
+import com.napkinsgray.napkins24.exceptions.errors.Exception400;
+import com.napkinsgray.napkins24.exceptions.errors.Exception401;
 import com.napkinsgray.napkins24.repository.UserRepository;
 import com.napkinsgray.napkins24.utils.JwtTokenProvider;
+import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +22,20 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     * 사용자 등록 (회원가입)
+     *
+     * @param username 사용자 이름
+     * @param password 사용자 비밀번호
+     * @param email 사용자 이메일
+     */
+    @Transactional
     public void registerUser(String username, String password, String email) {
-        if(userRepository.existsByUsername(username)) {
-            throw new IllegalArgumentException("이미 졵하는 사용자 이름입니다.");
+        if (userRepository.existsByUsername(username)) {
+            throw new Exception400( "이미 존재하는 사용자 이름입니다.");
         }
         if (userRepository.existsByEmail(email)) {
-            throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
+            throw new Exception400( "이미 존재하는 이메일입니다.");
         }
 
         // 비밀번호 암호화
@@ -39,27 +50,24 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public boolean validatePassword(String rawPassword, String encodedPassword) {
-        // 비밀번호 검증
-        return passwordEncoder.matches(rawPassword, encodedPassword);
-    }
-
     /**
-     * 로그인
+     * 사용자 로그인
      *
      * @param username 사용자 이름
      * @param password 사용자 비밀번호
      * @return JWT 토큰
      */
     public String loginUser(String username, String password) {
+        // 사용자 조회
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+                .orElseThrow(() -> new Exception401("사용자를 찾을 수 없습니다."));
+
+        // 비밀번호 검증
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+            throw new Exception401("비밀번호가 일치하지 않습니다.");
         }
 
         // JWT 토큰 생성
         return jwtTokenProvider.generateToken(user.getId(), user.getUsername(), "ROLE_USER");
     }
-
 }

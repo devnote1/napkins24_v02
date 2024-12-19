@@ -18,6 +18,11 @@ public class Cart {
 
     // 단방향 맵핑
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    // 단방향 맵핑
+    @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 

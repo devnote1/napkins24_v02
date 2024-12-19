@@ -22,5 +22,6 @@ public class DataLoader implements CommandLineRunner {
         bookRepository.save(new Book("자바의 정석", "남궁성", BigDecimal.valueOf(25000.00), 10));
         bookRepository.save(new Book("스프링 부트 실전", "김영한", BigDecimal.valueOf(35000), 7));
         bookRepository.save(new Book("리액트 완벽 가이드", "이호진", BigDecimal.valueOf(30000), 5));
+        bookRepository.save(new Book("플러터 UI 실전", "김근호", BigDecimal.valueOf(15000), 3));
     }
 }

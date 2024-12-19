@@ -24,6 +24,10 @@ import java.time.LocalDateTime;
 @Table(name = "tb_user")
 public class User {
 
+    public User(Long id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 기본 키 (자동 증가)

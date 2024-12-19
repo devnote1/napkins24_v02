@@ -61,33 +61,4 @@ public class JwtTokenProvider {
                 .verify(token);
     }
 
-    /**
-     * 토큰에서 사용자 이름 추출
-     *
-     * @param token JWT 토큰
-     * @return 사용자 이름 (username)
-     */
-    public String getUsernameFromToken(String token) {
-        return validateToken(token).getClaim("username").asString(); // 페이로드의 username 클레임 반환
-    }
-
-    /**
-     * 토큰에서 사용자 ID 추출
-     *
-     * @param token JWT 토큰
-     * @return 사용자 ID
-     */
-    public Long getUserIdFromToken(String token) {
-        return validateToken(token).getClaim("userId").asLong(); // 페이로드의 userId 클레임 반환
-    }
-
-    /**
-     * 토큰에서 권한 정보(roles) 추출
-     *
-     * @param token JWT 토큰
-     * @return 사용자 권한 (roles)
-     */
-    public String getRolesFromToken(String token) {
-        return validateToken(token).getClaim("roles").asString(); // 페이로드의 roles 클레임 반환
-    }
 }
