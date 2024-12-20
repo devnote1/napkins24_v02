@@ -1,4 +1,4 @@
-# 📚 Napkins24 - 온라인 서점 API (v2)
+# 📚 spring_tenco24_v02 - 온라인 서점 API (v2)
 
 ### 프로젝트 소개
 Napkins24는 간단한 책 관리, 장바구니 관리 및 **회원가입/로그인 기능**을 제공하는 REST API입니다.  
